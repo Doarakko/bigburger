@@ -2,7 +2,7 @@
 
 Biiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiig burger!
 
-![sample](./sample.png)
+![sample](./sample.gif)
 
 ## Install
 
@@ -39,10 +39,10 @@ Usage of bigburger:
 ## Example
 
 ```
-$ bigburger -p 3 -t 2 -n 3 -c 2 -l 2 -i 0.6
+$ bigburger -n 3 -p 6 -c 5 -l 3 -t 3
 ```
 
-![example](./example.png)
+![example](./sample1.gif)
 
 ## Credit
 
