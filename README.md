@@ -42,7 +42,7 @@ Usage of bigburger:
 $ bigburger -n 3 -p 6 -c 5 -l 3 -t 3
 ```
 
-![example](./sample1.gif)
+![example](./sample2.gif)
 
 ## Credit
 
