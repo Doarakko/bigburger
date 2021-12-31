@@ -2,32 +2,32 @@
 
 Add new toppingss.
 
-## Run on local
-
-1. Set
+## 1. Set
 
 ```
-$ git clone https://github.com/Doarakko/bigburger
-$ cd bigburger
+git clone https://github.com/Doarakko/bigburger
+cd bigburger
 ```
 
-2. Prepare new topping image  
-    Width is `218` pixels and format is `PNG`.  
-    More than 218 pixels will be cut.
+## 2. Prepare new topping image
 
-    Set to `public/<image file name>.png`.
+Width is `218` pixels and format is `PNG`.
 
-3. Generate `statik/statik.go`
+More than 218 pixels will be cut.
 
+Set to `public/<image file name>.png`.
+
+## 3. Generate `statik/statik.go`
+
+```bash
+statik -src=public
 ```
-$ statik -src=public
-```
 
-4. Fix `main.go`
+## 4. Fix `main.go`
 
-- Use local `statik`
+Use local `statik`.
 
-```
+```go
 import (
 	// omit
 
@@ -38,17 +38,18 @@ import (
 )
 ```
 
-- Change array size
+Change array size.
 
-```
+```go
 var toppings [n]Topping
 ```
 
-- Add some description about new topping
-    - Image file name and `toppings[i].Name` is same
-    - `toppings[i].Count` is default value
+Add some description about new topping.
 
-```
+Image file name and `toppings[i].Name` is same.
+`toppings[i].Count` is default value.
+
+```go
 func init() {
 	// omit
 
@@ -60,8 +61,8 @@ func init() {
 }
 ```
 
-5. Run
+## 5. Run
 
-```
-$ go run main.go -<option initial> 3
+```go
+go run main.go -<option initial> 3
 ```

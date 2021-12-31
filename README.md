@@ -7,7 +7,7 @@ Biiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiig burger!
 ## Install
 
 ```bash
-go get -u github.com/Doarakko/bigburger
+go install github.com/Doarakko/bigburger@latest
 ```
 
 ## Usage
