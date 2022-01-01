@@ -14,10 +14,14 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
+	"time"
 
+	"golang.org/x/term"
 	//_ "./statik"
 	_ "github.com/Doarakko/bigburger/statik"
 	"github.com/mattn/go-sixel"
+	"github.com/mattn/longcat/iterm"
 	"github.com/rakyll/statik/fs"
 )
 
@@ -58,8 +62,15 @@ func init() {
 		log.Fatal(err)
 	}
 
-	top.Img, _ = loadImage(fs, "/top.png")
-	bottom.Img, _ = loadImage(fs, "/bottom.png")
+	top.Img, err = loadImage(fs, "/top.png")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	bottom.Img, err = loadImage(fs, "/bottom.png")
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	toppings[0].Name = "putty"
 	toppings[0].Count = 1
@@ -108,10 +119,10 @@ func main() {
 	flag.Parse()
 
 	// Count number of unique toppings
-	nunique := 0
+	uniqueToppingCount := 0
 	for i := 0; i < len(toppings); i++ {
 		if toppings[i].Count > 0 {
-			nunique++
+			uniqueToppingCount++
 		}
 	}
 
@@ -132,7 +143,7 @@ func main() {
 		// toppings
 		count := 0
 		y := top.Img.Bounds().Dy()
-		for i := 0; count != nunique; i++ {
+		for i := 0; count != uniqueToppingCount; i++ {
 			for j := 0; j < len(toppings); j++ {
 				if toppings[j].Count == 0 || toppings[j].Count-i < 0 {
 					continue
@@ -164,11 +175,49 @@ func main() {
 	}
 
 	var buf bytes.Buffer
-	var enc interface{ Encode(image.Image) error }
-	enc = sixel.NewEncoder(&buf)
+	var enc interface {
+		Encode(image.Image) error
+	}
+	if checkIterm() {
+		enc = iterm.NewEncoder(&buf)
+	} else {
+		enc = sixel.NewEncoder(&buf)
+	}
+
 	if err := enc.Encode(output); err != nil {
 		log.Fatal(err)
 	}
 	os.Stdout.Write(buf.Bytes())
 	os.Stdout.Sync()
+}
+
+// https://github.com/mattn/longcat
+func checkIterm() bool {
+	if strings.HasPrefix(os.Getenv("TERM_PROGRAM"), "iTerm") {
+		return true
+	}
+	return getDA2() == "\x1b[>0;95;0c" // iTerm2 version 3
+}
+
+// https://github.com/mattn/longcat
+func getDA2() string {
+	s, err := term.MakeRaw(1)
+	if err != nil {
+		return ""
+	}
+	defer term.Restore(1, s)
+	_, err = os.Stdout.Write([]byte("\x1b[>c")) // DA2 host request
+	if err != nil {
+		return ""
+	}
+	defer os.Stdout.SetReadDeadline(time.Time{})
+
+	time.Sleep(10 * time.Millisecond)
+
+	var b [100]byte
+	n, err := os.Stdout.Read(b[:])
+	if err != nil {
+		return ""
+	}
+	return string(b[:n])
 }
