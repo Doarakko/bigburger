@@ -12,6 +12,7 @@ import (
 	"image/png"
 	"io/ioutil"
 	"log"
+	"math/rand"
 	"net/http"
 	"os"
 	"strings"
@@ -62,7 +63,12 @@ func init() {
 		log.Fatal(err)
 	}
 
-	top.Img, err = loadImage(fs, "/top.png")
+	if randBool() {
+		top.Img, err = loadImage(fs, "/top.png")
+	} else {
+		top.Img, err = loadImage(fs, "/top-sesame.png")
+	}
+
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -220,4 +226,9 @@ func getDA2() string {
 		return ""
 	}
 	return string(b[:n])
+}
+
+func randBool() bool {
+	rand.Seed(time.Now().UnixNano())
+	return rand.Intn(2) == 1
 }
