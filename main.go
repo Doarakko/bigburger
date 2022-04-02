@@ -54,6 +54,7 @@ func saveImage(filename string, img image.Image) error {
 
 var toppings [6]Topping
 var top Topping
+var topWithSesame Topping
 var bottom Topping
 
 func init() {
@@ -63,6 +64,11 @@ func init() {
 	}
 
 	top.Img, err = loadImage(fs, "/top.png")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	topWithSesame.Img, err = loadImage(fs, "/top-sesame.png")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -108,15 +114,21 @@ func main() {
 	var nBurger int
 	var rInterval float64
 	var fileName string
+	var sesame bool
 
 	flag.IntVar(&nBurger, "n", 1, "number of big burger")
 	flag.Float64Var(&rInterval, "i", 1.0, "rate of intervals")
 	flag.StringVar(&fileName, "o", "", "output image file")
+	flag.BoolVar(&sesame, "s", false,"buns with sesame")
 
 	for i := 0; i < len(toppings); i++ {
 		flag.IntVar(&toppings[i].Count, toppings[i].Option, toppings[i].Count, fmt.Sprintf("how many %s", toppings[i].Name))
 	}
 	flag.Parse()
+
+	if sesame{
+		top = topWithSesame
+	}
 
 	// Count number of unique toppings
 	uniqueToppingCount := 0
