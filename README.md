@@ -15,25 +15,24 @@ go install github.com/Doarakko/bigburger@latest
 ```bash
 Usage of bigburger:
   -C int
-    how many cat
-  -R flip vertical
+    	how many cat
   -b int
-    how many bun
+    	how many bun
   -c int
-    how many cheese
+    	how many cheese
   -i float
-    rate of intervals (default 1)
+    	rate of intervals (default 1)
   -l int
-    how many lettuce
+    	how many lettuce
   -n int
-    number of big burger (default 1)
+    	number of big burger (default 1)
   -o string
-    output image file
+    	output image file
   -p int
-    how many putty (default 1)
-  -r flip holizontal
+    	how many putty (default 1)
+  -s	buns with sesame
   -t int
-    how many tomato
+    	how many tomato
 ```
 
 ## Example
