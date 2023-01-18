@@ -1,5 +1,8 @@
 # bigburger
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/Doarakko/bigburger.svg)](https://pkg.go.dev/github.com/Doarakko/bigburger)
+[![Go Report Card](https://goreportcard.com/badge/github.com/Doarakko/bigburger)](https://goreportcard.com/report/github.com/Doarakko/bigburger)
+
 Biiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiig burger!
 
 ![sample](./sample.gif)
