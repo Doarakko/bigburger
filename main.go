@@ -17,12 +17,13 @@ import (
 	"strings"
 	"time"
 
-	"golang.org/x/term"
-	//_ "./statik"
-	_ "github.com/Doarakko/bigburger/statik"
 	"github.com/mattn/go-sixel"
 	"github.com/mattn/longcat/iterm"
 	"github.com/rakyll/statik/fs"
+	"golang.org/x/term"
+
+	// _ "./statik"
+	_ "github.com/Doarakko/bigburger/statik"
 )
 
 // Topping struct
@@ -119,14 +120,14 @@ func main() {
 	flag.IntVar(&nBurger, "n", 1, "number of big burger")
 	flag.Float64Var(&rInterval, "i", 1.0, "rate of intervals")
 	flag.StringVar(&fileName, "o", "", "output image file")
-	flag.BoolVar(&sesame, "s", false,"buns with sesame")
+	flag.BoolVar(&sesame, "s", false, "buns with sesame")
 
 	for i := 0; i < len(toppings); i++ {
 		flag.IntVar(&toppings[i].Count, toppings[i].Option, toppings[i].Count, fmt.Sprintf("how many %s", toppings[i].Name))
 	}
 	flag.Parse()
 
-	if sesame{
+	if sesame {
 		top = topWithSesame
 	}
 
