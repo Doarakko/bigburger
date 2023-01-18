@@ -10,7 +10,6 @@ import (
 	"image"
 	"image/draw"
 	"image/png"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
@@ -50,7 +49,8 @@ func saveImage(filename string, img image.Image) error {
 	if err != nil {
 		return err
 	}
-	return ioutil.WriteFile(filename, buf.Bytes(), 0644)
+
+	return os.WriteFile(filename, buf.Bytes(), 0644)
 }
 
 var toppings [6]Topping
