@@ -20,6 +20,8 @@ jobs:
           go-version-file: go.mod
           cache: true
 
+      - run: go get github.com/rakyll/statik
+
       - uses: goreleaser/goreleaser-action@v4
         with:
           args: release --rm-dist
