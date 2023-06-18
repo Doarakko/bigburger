@@ -16,3 +16,5 @@ vendor/
 
 .idea
 dist
+
+.DS_Store
