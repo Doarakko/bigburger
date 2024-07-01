@@ -22,7 +22,7 @@ jobs:
 
       - run: go get github.com/rakyll/statik
 
-      - uses: goreleaser/goreleaser-action@v4
+      - uses: goreleaser/goreleaser-action@v6
         with:
           args: release --rm-dist
         env:
