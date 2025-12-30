@@ -9,8 +9,17 @@ Biiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiig burger!
 
 ## Install
 
-```bash
+go
+
+```sh
 go install github.com/Doarakko/bigburger@latest
+```
+
+Homebrew
+
+```sh
+brew tap Doarakko/homebrew-tap
+brew install bigburger
 ```
 
 ## Usage
@@ -45,6 +54,16 @@ bigburger -n 3 -p 6 -c 5 -l 3 -t 3
 ```
 
 ![example](./sample2.gif)
+
+## Release
+
+```sh
+# 1. Create and push tag
+git tag v0.1.0
+git push origin v0.1.0
+# 2. Update homebrew-tap
+./scripts/update-homebrew.sh 0.1.0
+```
 
 ## Credit
 
