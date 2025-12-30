@@ -16,7 +16,7 @@ jobs:
 
       - name: Build
         run: |
-          go get github.com/rakyll/statik
+          go install github.com/rakyll/statik@latest
           go generate ./...
           go build -o bigburger .
 

@@ -41,7 +41,7 @@ jobs:
 
       - name: Build
         run: |
-          go get github.com/rakyll/statik
+          go install github.com/rakyll/statik@latest
           go generate ./...
           CGO_ENABLED=0 GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -o bigburger .
 
