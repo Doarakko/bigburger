@@ -218,7 +218,7 @@ func getDA2() string {
 	if err != nil {
 		return ""
 	}
-	defer term.Restore(1, s)
+	defer func() { _ = term.Restore(1, s) }()
 	_, err = os.Stdout.Write([]byte("\x1b[>c")) // DA2 host request
 	if err != nil {
 		return ""
