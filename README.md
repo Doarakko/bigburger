@@ -18,8 +18,7 @@ go install github.com/Doarakko/bigburger@latest
 Homebrew
 
 ```sh
-brew tap Doarakko/homebrew-tap
-brew install bigburger
+brew install Doarakko/tap/bigburger
 ```
 
 ## Usage
