@@ -12,6 +12,6 @@ require (
 require (
 	github.com/disintegration/imaging v1.6.2 // indirect
 	github.com/soniakeys/quant v1.0.0 // indirect
-	golang.org/x/image v0.3.0 // indirect
+	golang.org/x/image v0.18.0 // indirect
 	golang.org/x/sys v0.25.0 // indirect
 )
