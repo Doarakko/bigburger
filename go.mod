@@ -1,10 +1,10 @@
 module github.com/Doarakko/bigburger
 
-go 1.19
+go 1.22
 
 require (
 	github.com/mattn/go-sixel v0.0.5
-	github.com/mattn/longcat v0.0.4
+	github.com/mattn/longcat v0.0.12
 	github.com/rakyll/statik v0.1.7
 	golang.org/x/term v0.24.0
 )
